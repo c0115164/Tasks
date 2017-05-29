@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>js6</title>
+</head>
+<body>
+
+    <input id="send" type="submit" name="send" value="送信">
+
+    <script type="text/javascript">
+        var btn = document.getElementById('send');
+        btn.addEventListener("click",response,false);
+
+        function response(){
+            req = new XMLHttpRequest();
+            req.onreadystatechange = checkReadyState;
+            req.open("GET","./js6_server.php",true);
+            req.send(null);
+
+            function checkReadyState(){
+                if(req.readyState == 4){
+                    if(req.status >= 200 && req.status < 300){
+                        req.addEventListener("load",r_alert,false);
+                        function r_alert(){
+                            alert(req.responseText);
+                        }
+                    }else{
+                        alert("Error:status code="+req.status);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

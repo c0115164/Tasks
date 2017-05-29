@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <title>js2</title>
+</head>
+<body>
+    <button id="push">ボタンを押してください</button>
+
+    <script type="text/javascript">
+        var target = document.getElementById("push");
+        target.addEventListener("click",push,false);
+        function push(){
+            document.getElementById("push").innerHTML = "ボタンが押されました";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>js5</title>
+</head>
+<body>
+    <input id="left" type="button" name="left" value="左へ">
+    <input id="right" type="button" name="right" value="右へ">
+    <div id="layer" style="position: absolute; left: 0;">
+        <p>レイヤ</p>
+    </div>
+
+    <script type="text/javascript">
+        var left = document.getElementById("left");
+        var right = document.getElementById("right");
+        var object = document.getElementById("layer");
+
+        left.addEventListener("click",moveLeft,false);
+        right.addEventListener("click",moveRight,false);
+
+        function moveLeft(){
+            if (parseInt(object.style.left)>=20) {
+                object.style.left = parseInt(object.style.left) -20 +"px";
+            }
+        }
+
+        function moveRight(){
+            if (parseInt(object.style.left)<=200) {
+                object.style.left = parseInt(object.style.left) +20 +"px";
+            }
+        }
+    </script>
+</body>
+</html>

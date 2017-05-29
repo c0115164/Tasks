@@ -1,0 +1,2 @@
+{"name":"\u5de5\u79d1\u592a\u90ce","address":"\u516b\u738b\u5b50","tel":"00-000-0000","email":"taro@hoge.jp"}
+{"name":"\u6771\u4eac\u592a\u90ce","address":"\u6771\u4eac\u90fd","tel":"12-345-6789","email":"taro@fuga.jp"}

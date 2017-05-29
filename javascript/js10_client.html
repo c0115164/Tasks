@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>js10</title>
+</head>
+<body>
+
+    <form name="form">
+    入力してください<input type="text" name="text" value=""><br />
+    <input type="button" id="send" name="send" value="送信"><br />
+    </form>
+    <div>
+        <p id="layer">レイヤーです</p>
+    </div>
+
+    <script type="text/javascript">
+        var send=document.getElementById('send');
+        send.addEventListener("click",get,false);
+
+        function get(){
+            var textbox = "text="+document.form.text.value;
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = checkReadyState;
+            req.open("GET","./js7_server.php?"+textbox,true);
+            req.send(null);
+
+            function checkReadyState(){
+                if(req.readyState == 4){
+                    if(req.status >= 200 && req.status < 300){
+                        req.addEventListener("load",r_alert,false);
+                        function r_alert(){
+                            document.getElementById('layer').innerHTML = req.responseText;
+                        }
+                    }else{
+                        alert("Error:status code="+req.status);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

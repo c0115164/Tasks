@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>js11</title>
+</head>
+<body>
+    <input type="button" id="button" name="button" value="押してください"><br />
+
+    <div id="layer">
+    </div>
+
+    <script type="text/javascript">
+        var btn = document.getElementById('button');
+        btn.addEventListener("click",get,false);
+
+        function get() {
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = checkReadyState;
+            req.open("GET","./js11_server.php",true);
+            req.send(null);
+
+            function checkReadyState() {
+                if (req.readyState==4) {
+                    if (req.status>=200 && req.status<300) {
+                        req.addEventListener("load",r_alert,false);
+                        function r_alert() {
+                            var address = JSON.parse(req.responseText);
+                            var doc = "";
+                            doc += '<table border="1">';
+                            doc += '<tr align="center">';
+                            doc += '<th>名前</th>';
+                            doc += '<th>住所</th>';
+                            doc += '<th>電話番号</th>';
+                            doc += '<th>メール</th>';
+                            doc += '</tr>';
+                            for (var i = 0 ; i < address.length; i++) {
+                                doc += '<td>'+address[i].name+'</td>';
+                                doc += '<td>'+address[i].address+'</td>';
+                                doc += '<td>'+address[i].tel+'</td>';
+                                doc += '<td>'+address[i].email+'</td>';
+                                doc += '</tr>';
+                            }
+                            doc += '</table>';
+                            document.getElementById('layer').innerHTML = doc;
+                        }
+                    }else{
+                        alert("Error:status code="+req.status);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

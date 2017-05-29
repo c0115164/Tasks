@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <title>js4</title>
+</head>
+<body>
+    <button id="button">ボタンを押してください</button>
+    <input id="box" type="checkbox" name="checkbox" checked="false">
+
+    <script type="text/javascript">
+        var target = document.getElementById("button");
+        target.addEventListener("click",check_inverter,false);
+        function check_inverter(){
+            document.getElementById("box").checked = !(document.getElementById("box").checked)
+        }
+    </script>
+</body>
+</html>

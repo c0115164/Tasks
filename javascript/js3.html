@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <title>js3</title>
+</head>
+<body>
+    <form name="form" action="">
+    テキストを入力してください。<br />
+    <input type="text" name="text">
+    <input id="pop" type="button" name="send" value="送信">
+    </form>
+
+    <script type="text/javascript">
+        var target = document.getElementById('pop');
+        target.addEventListener("click",pop,false);
+        function pop(){
+            alert(form.text.value);
+        }
+    </script>
+</body>
+</html>
